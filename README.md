@@ -1,8 +1,9 @@
-# React + Vite
+📽️ MovieFLiX - Aplicație de căutare filme
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MovieFLiX este o aplicație web care permite utilizatorilor să caute filme folosind un API extern și să vizualizeze informații relevante despre acestea, inclusiv titlul, anul lansării, durata, rating-ul IMDb și sinopsisul.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔧 Tehnologii utilizate:
+⚛️ React 19
+🔍 OMDb API
+🚀 Vite
+🧪 Selenium
