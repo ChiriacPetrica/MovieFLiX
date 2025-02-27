@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import Loader from "./Loader";
+import { useLocalCache } from "../hooks/useLocalCache";
 
-const KEY = "f84fc31d";
+const KEY = import.meta.env.VITE_OMBD_KEY;
 
 export default function MovieDetails({ selectedId }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [watchedMovies, setWatchedMovies] = useLocalCache("watchedMovies", []);
+
+  const isWatched = watchedMovies.includes(selectedId);
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -29,6 +33,14 @@ export default function MovieDetails({ selectedId }) {
     };
   }, [movie.Title]);
 
+  const toggleWatched = () => {
+    if (isWatched) {
+      setWatchedMovies(watchedMovies.filter((id) => id !== selectedId));
+    } else {
+      setWatchedMovies([...watchedMovies, selectedId]);
+    }
+  };
+
   return (
     <div className="details">
       {isLoading ? (
@@ -51,6 +63,13 @@ export default function MovieDetails({ selectedId }) {
           </header>
 
           <section>
+            <button
+              onClick={toggleWatched}
+              className={`watch-button ${isWatched ? "watched" : ""}`}
+            >
+              {isWatched ? "Vizionat" : "Adaugă la vizionate"}
+            </button>
+
             <p>
               <em>{movie.Plot}</em>
             </p>
