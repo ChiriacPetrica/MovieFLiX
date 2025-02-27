@@ -204,6 +204,7 @@ body {
   letter-spacing: 1px;
   width: 100%;
   text-align: center;
+  border: 2px solid transparent;
 }
 
 .watch-button:hover {
