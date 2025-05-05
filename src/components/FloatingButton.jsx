@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useWatchedDetails } from "../hooks/useWatchedDetails";
-import { useEffect } from "react";
 
 export default function FloatingButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +11,9 @@ export default function FloatingButton() {
     if (!isOpen) return;
 
     try {
-      setWatchedIds(JSON.parse(localStorage.getItem("watchedMovies")));
+      const raw = localStorage.getItem("watchedMovies");
+      const parsed = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(parsed)) setWatchedIds(parsed);
     } catch {
       setWatchedIds([]);
     }
@@ -25,8 +26,11 @@ export default function FloatingButton() {
       </button>
 
       {isOpen && (
-        <div className="popup-overlay">
-          <div className="popup-content">
+        <div className="popup-overlay" onClick={() => setIsOpen(false)}>
+          <div
+            className="popup-content"
+            onClick={(e) => e.stopPropagation()} // prevenim închiderea accidentală
+          >
             <button className="close-btn" onClick={() => setIsOpen(false)}>
               ×
             </button>
@@ -39,7 +43,7 @@ export default function FloatingButton() {
               <ul className="movie-list">
                 {details.map((movie) => (
                   <li key={movie.imdbID}>
-                    <strong>{movie.Title}</strong> ({movie.Year}) -{" "}
+                    <strong>{movie.Title}</strong> ({movie.Year}) –{" "}
                     {movie.Genre}
                     <br />
                     IMDb: {movie.imdbRating}
