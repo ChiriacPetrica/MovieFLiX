@@ -11,6 +11,7 @@ import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
 import MovieList from "./components/MovieList";
 import MovieDetails from "./components/MovieDetails";
+import FloatingButton from "./components/FloatingButton";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -40,6 +41,7 @@ export default function App() {
 
         <Box>{selectedId && <MovieDetails selectedId={selectedId} />}</Box>
       </Main>
+      <FloatingButton />
     </>
   );
 }
