@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
-import { useMovies } from "../hooks/useMovies";
+import { useMovies } from "./hooks/useMovies";
 
-import NavBar from "../components/NavBar";
-import Search from "../components/Search";
-import NumResults from "../components/NumResults";
-import Main from "../components/Main";
-import Box from "../components/Box";
-import Loader from "../components/Loader";
-import ErrorMessage from "../components/ErrorMessage";
-import MovieList from "../components/MovieList";
-import MovieDetails from "../components/MovieDetails";
+import NavBar from "./components/NavBar";
+import Search from "./components/Search";
+import NumResults from "./components/NumResults";
+import Main from "./components/Main";
+import Box from "./components/Box";
+import Loader from "./components/Loader";
+import ErrorMessage from "./components/ErrorMessage";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
 
 export default function App() {
   const [query, setQuery] = useState("");

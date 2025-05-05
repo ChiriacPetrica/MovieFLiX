@@ -6,4 +6,3 @@ MovieFLiX este o aplicație web care permite utilizatorilor să caute filme folo
 ⚛️ React 19
 🔍 OMDb API
 🚀 Vite
-🧪 Selenium
